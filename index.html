@@ -3,23 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Final Project</title>
+    <title>Student Score and Physiological Feature Visualization</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="comparison.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Student Exam Comparison</h1>
-    <label for="studentSelect">Choose a student:</label>
-    <select id="studentSelect" onchange="updatePlot()">
-        <!-- Add options for each student -->
-        <option value="1">Student 1</option>
-        <option value="2">Student 2</option>
-        <option value="3">Student 3</option>
-        <!-- Add more options as needed -->
-    </select>
-    <!-- <button onclick="updatePlot()">Update Plot</button> -->
+    <div id="header-container">
+    <h1 id="main-title">Do Stress Patterns During Exams Reveal Hidden Insights About Students' Performance?</h1>
+    <p id="subtitle">Stress plays a significant role in how students perform during exams.
+        This dynamic visualization facilitates the exploration of how physiological stress markers—such as body movement,
+        sweat response, heart rate, and skin temperature—relate to exam grades by examining individual features and their
+        combinations. The dataset includes exam data from 10 students across three exams, with their stress markers tracked 
+        by a smartwatch-like device worn on their non-dominant hand throughout the exam period.</p>
+    </div>
+    <div class="graph-group-container">
+        <h2>Section 1: How Do Individual Physiological Factors Relate to Exam Performance?</h2>
+        <p id="description1">Use the <strong>dropdown menu</strong> to select different markers and 
+            compare their patterns across students.<br>
+            Each of the paired graphs compares two representative students with different grades.
+            Since the data for different markers is recorded at different sample rates, 
+            aggregation is done by exam time, with each point representing the average marker value per minute.
+            <br><br> The <strong>blue line</strong> shows the marker’s value over time, while the <strong>red dashed line</strong> indicates the average 
+            baseline for that marker. 🔍 Hover over the average line to see its exact value. </p>
+        <div class="select-container">
+            <label for="featureSelect">Select Feature:</label>
+            <select id="featureSelect">
+                <option value="acc">Accelerometer (ACC)</option>
+                <option value="eda">Electrodermal Activity (EDA)</option>
+                <option value="hr">Heart Rate (HR)</option>
+                <option value="temp">Temperature (TEMP)</option>
+            </select>
+        </div>
+        <script src="compare_plots.js"></script>
 
-    <div id="midterms"></div>
-    <div id="final"></div>
+    <!-- Dynamic charts container -->
+        <div id="chartsContainer" style="display: flex; justify-content: space-around; flex-wrap: wrap;"></div>
+    </div>
+
+    <div class="graph-group-container">
+        <h2>Section 2: How Do Individual Physiological Factors Differ Across Exams?</h2>
+        <p id="description1">Use the <strong>dropdown menu</strong> to select different markers and 
+            compare their patterns of different students and features across Exams.
+            <br><br> The <strong>blue line</strong> shows the marker’s value over time, while the <strong>red dashed line</strong> indicates the average 
+            baseline for that marker. 🔍 Hover over the average line to see its exact value. </p>
+            <div class="select-group">
+            <div class="select-container">
+            <label for="featuresSelect">Select Feature:</label>
+            <select id="featuresSelect">
+                <option value="acc">Accelerometer (ACC)</option>
+                <option value="eda">Electrodermal Activity (EDA)</option>
+                <option value="hr">Heart Rate (HR)</option>
+                <option value="temp">Temperature (TEMP)</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <label for="studentSelect">Select Student:</label>
+            <select id="studentSelect">
+                <option value="S1">Student 1</option>
+                <option value="S2">Student 2</option>
+                <option value="S3">Student 3</option>
+                <option value="S4">Student 4</option>
+                <option value="S5">Student 5</option>
+                <option value="S6">Student 6</option>
+                <option value="S7">Student 7</option>
+                <option value="S8">Student 8</option>
+                <option value="S9">Student 9</option>
+                <option value="S10">Student 10</option>
+            </select>
+        </div>
+    </div>
+        <script src="compare_plots_3.js"></script>
+
+    <!-- Dynamic charts container -->
+        <div id="chartsContainers" style="display: flex; justify-content: space-around; flex-wrap: wrap;"></div>
+    </div>
+
+    <br><br>
+    <div class="pred-graph-box">
+    <div class="pred-graph-container">
+    <h2>Section 3: How Do Multiple Factors Combine to Predict Exam Grades?</h2>
+    <p id="description1">While each factor provides valuable information, real-life stress responses are complex.
+        This section allows you to explore how combinations of physiological markers work together to predict a 
+        student’s exam grade. 
+        <br><br>The predictions are generated by a <strong>linear regression model</strong> trained on an aggregated 
+        dataset, where each data point represents the mean value of each physiological marker per student per exam 
+        (30 student-exam combinations in total). The model uses four selected physiological markers (ACC, EDA, HR, TEMP) as features, with the 
+        exam grade (percentage) as the label.
+        <br><br>This section also allows you to explore how combinations of physiological markers work together 
+        to predict a student’s exam grade using this model. Use the <strong>sliders</strong> below to adjust feature <strong>standard deviations</strong> 
+        and explore how changes in stress markers affect <strong>grade predictions</strong>.
+        </p>
+    </div>
+    <br>
+    <div id="sliders-container">
+        <div id="sliders">
+            <div id="slider-labels">
+                <label>ACC(std)</label>
+                <label>EDA(std)</label>
+                <label>HR(std)</label>
+                <label>TEMP(std)</label>
+            </div>
+            <div id="slider-controls">
+                <input type="range" id="slider1" min="-3" max="3" step="0.1" value="0">
+                <input type="range" id="slider2" min="-3" max="3" step="0.1" value="0">
+                <input type="range" id="slider3" min="-3" max="3" step="0.1" value="0">
+                <input type="range" id="slider4" min="-3" max="3" step="0.1" value="0">
+            </div>
+            <div id="slider-values">
+                <span id="value1">0</span>
+                <span id="value2">0</span>
+                <span id="value3">0</span>
+                <span id="value4">0</span>
+            </div>
+        </div>
+    
+        <!-- Predicted Score (Now Positioned to the Right) -->
+        <div id="predicted-score-container">
+            <h3>Predicted Grade (%): </h3>
+            <span id="predicted-score">--</span>
+        </div>
+    </div>
+    <div id="chart-container">
+        <svg width="1000" height="600"></svg>
+    </div>
+    <p id="description2">The Parallel Coordinates Plot below visualizes how various physiological features interact: 
+        Vertical axes represent each marker (ACC, EDA, HR, TEMP) and the predicted grade. 
+        Each line corresponds to a student’s data across the features. Color-coded lines indicate grade groups: 
+        Dark Red: High grades (Q1), Light Red: Medium grades (Q2), Light Blue: Low grades (Q3), 
+        Dark Blue: Very low grades (Q4), and Green: Model’s predicted grade line.
+        <br><br> Follow a single line from left to right to see how a student's physiological responses influence 
+        their predicted grade. Lines toward higher grade values indicate profiles associated with better 
+        performance, while downward correspond to lower grades. Notice how higher ACC, HR, and TEMP values 
+        generally align with higher predicted grades, while elevated EDA often correlates with lower scores.</p>
+    </div>
+
+    <!-- Load the JavaScript files -->
+    
+    <script src="parallel_coordinates.js"></script>
+    <div id="footnote">
+        <p>
+            ⚠️ This prediction is based on physiological data collected from students at the University of Houston. 
+            Results may not generalize to all individuals or settings.
+        </p>
+        <p><strong>Source</strong>: The dataset used in this visualization is based on the work: Amin, M. R., Wickramasuriya, D., & Faghih, R. T. (2022). 
+            <br> A Wearable Exam Stress Dataset for Predicting Cognitive Performance in Real-World Settings (version 1.0.0). 
+            PhysioNet. https://doi.org/10.13026/kvkb-aj90.</p>
+        <p>For more information about the dataset, please visit the <a href="https://physionet.org/content/wearable-exam-stress/1.0.0/">PhysioNet website</a>. For more information about the project, please read <a href="https://docs.google.com/document/d/16PU-HTPSYSINC1JWICOQHc-yPRQqnTjSzBKgubQLWK8/edit?usp=sharing">Project Writeup</a>.</p>  
+    </div>
 </body>
 </html>
