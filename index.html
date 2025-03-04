@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="comparison.js"></script>
+</head>
+<body>
+    <h1>Student Exam Comparison</h1>
+    <label for="studentSelect">Choose a student:</label>
+    <select id="studentSelect" onchange="updatePlot()">
+        <!-- Add options for each student -->
+        <option value="1">Student 1</option>
+        <option value="2">Student 2</option>
+        <option value="3">Student 3</option>
+        <!-- Add more options as needed -->
+    </select>
+    <!-- <button onclick="updatePlot()">Update Plot</button> -->
+
+    <div id="midterms"></div>
+    <div id="final"></div>
+</body>
+</html>
