@@ -264,8 +264,8 @@ document.addEventListener('DOMContentLoaded', function () {
         chartDataSets[1].alignedMaxY = maxY;
     
         // Keep the Final (index 2) independent
-        chartDataSets[2].alignedMinY = Math.floor(chartDataSets[2].minY);
-        chartDataSets[2].alignedMaxY = Math.ceil(chartDataSets[2].maxY);
+        chartDataSets[2].alignedMinY = minY;
+        chartDataSets[2].alignedMaxY = maxY;
     }
 
     function renderCharts(chartDataSets, feature) {
