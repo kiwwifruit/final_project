@@ -649,7 +649,7 @@ body {
 .select-two-group {
     display: flex;
     justify-content: center;
-    gap: 200px; /* Adjust spacing between dropdowns */
+    gap: 175px; /* Adjust spacing between dropdowns */
     align-items: center;
     flex-wrap: wrap; /* Prevent overflow on smaller screens */
 }
