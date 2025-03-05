@@ -25,7 +25,7 @@
             aggregation is done by exam time, with each point representing the average marker value per minute.
             <br><br> The <strong>blue line</strong> shows the marker’s value over time, while the <strong>red dashed line</strong> indicates the average 
             baseline for that marker. 🔍 Hover over the average line to see its exact value. </p>
-        <div class="select-container">
+            <div class="select-container">
             <label for="featureSelect">Select Feature:</label>
             <select id="featureSelect">
                 <option value="acc">Accelerometer (ACC)</option>
@@ -33,6 +33,38 @@
                 <option value="hr">Heart Rate (HR)</option>
                 <option value="temp">Temperature (TEMP)</option>
             </select>
+        </div>
+        <div class="select-two-group">
+        <div class="select-container">
+            <label for="studentSelect_1">Select Student:</label>
+            <select id="studentSelect_1">
+                <option value="S1">Student 1</option>
+                <option value="S2">Student 2</option>
+                <option value="S3" selected>Student 3</option>
+                <option value="S4">Student 4</option>
+                <option value="S5">Student 5</option>
+                <option value="S6">Student 6</option>
+                <option value="S7">Student 7</option>
+                <option value="S8">Student 8</option>
+                <option value="S9">Student 9</option>
+                <option value="S10">Student 10</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <label for="studentSelect_2">Select Student:</label>
+            <select id="studentSelect_2">
+                <option value="S1">Student 1</option>
+                <option value="S2">Student 2</option>
+                <option value="S3">Student 3</option>
+                <option value="S4">Student 4</option>
+                <option value="S5">Student 5</option>
+                <option value="S6">Student 6</option>
+                <option value="S7" selected>Student 7</option>
+                <option value="S8">Student 8</option>
+                <option value="S9">Student 9</option>
+                <option value="S10">Student 10</option>
+            </select>
+        </div>
         </div>
         <script src="compare_plots.js"></script>
 

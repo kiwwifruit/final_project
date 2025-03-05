@@ -1,13 +1,65 @@
 document.addEventListener('DOMContentLoaded', function () {
     const featureSelect = document.getElementById('featureSelect');
+    const studentSelect1 = document.getElementById('studentSelect_1');
+    const studentSelect2 = document.getElementById('studentSelect_2');
+
+    let currentFeature = featureSelect.value;  // Default selected feature
+    let currentStudent1 = studentSelect1.value; // Default selected student 1
+    let currentStudent2 = studentSelect2.value; // Default selected student 2
+
+    let lastFeature = null; // Store the last selected feature
+
     featureSelect.addEventListener('change', function() {
-        updateCharts(this.value);
+        currentFeature = this.value;
+        updateCharts(currentFeature, currentStudent1, currentStudent2);
     });
 
-    updateCharts('acc'); // Initialize with 'hr'
+    function updateStudentOptions() {
+        // Get selected values
+        let selected1 = studentSelect1.value;
+        let selected2 = studentSelect2.value;
+    
+        // Loop through all options in both dropdowns
+        studentSelect1.querySelectorAll("option").forEach(option => {
+            option.disabled = option.value === selected2; // Disable selected2 in studentSelect1
+        });
+    
+        studentSelect2.querySelectorAll("option").forEach(option => {
+            option.disabled = option.value === selected1; // Disable selected1 in studentSelect2
+        });
+    
+        // If both dropdowns have the same value, adjust studentSelect2
+        if (selected1 === selected2) {
+            let availableOptions = [...studentSelect2.options].filter(option => !option.disabled);
+            if (availableOptions.length > 0) {
+                studentSelect2.value = availableOptions[0].value;
+                currentStudent2 = studentSelect2.value; // Update currentStudent2
+            }
+        }
+    }
+    
+    // Attach event listeners with option update logic
+    studentSelect1.addEventListener('change', function() {
+        currentStudent1 = this.value;
+        updateStudentOptions(); // Ensure no duplicates
+        updateCharts(currentFeature, currentStudent1, currentStudent2);
+    });
+    
+    studentSelect2.addEventListener('change', function() {
+        currentStudent2 = this.value;
+        updateStudentOptions(); // Ensure no duplicates
+        updateCharts(currentFeature, currentStudent1, currentStudent2);
+    });
+    
+    // Initialize the option restrictions
+    updateStudentOptions();
 
-    function updateCharts(feature) {
-        const filePaths = getFilePathsForFeature(feature);
+    updateCharts(currentFeature, currentStudent1, currentStudent2);
+
+
+    function updateCharts(feature, student1, student2) {
+        const filePaths = getFilePathsForFeature(feature, student1, student2);
+
         const promises = filePaths.map(path =>
             fetch(path)
             .then(response => response.text())
@@ -22,6 +74,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 renderCharts(chartDataSets, feature);
             } else {
                 updateGraphData(chartDataSets, feature);
+            }
+
+            if (lastFeature !== feature) {
+                d3.select(".graph-triple-description")
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0) // Fade out
+                    .on("end", function() {
+                        d3.select(this)
+                            .html(getsDescriptionForFeature(feature)) // Update description
+                            .transition()
+                            .duration(500)
+                            .style("opacity", 1); // Fade in with new text
+                    });
+    
+                lastFeature = feature; // Store the new feature
             }
         });
     }
@@ -68,11 +136,12 @@ document.addEventListener('DOMContentLoaded', function () {
             
             if (!chartDataSets[index]) return; // Prevent errors if missing data
     
-            const width = 550 - 60 - 40;
-            const height = 300 - 40 - 60;
+            const baseWidth = 550, baseHeight = 300, margin = { top: 40, right: 40, bottom: 60, left: 70 };
+            const width = index === 2 ? baseWidth * 2 - margin.left - margin.right : baseWidth - margin.left - margin.right;
+            const height = baseHeight - margin.top - margin.bottom;
             
             
-            const xScale = d3.scaleLinear().domain([0, 180]).range([0, width]);
+            const xScale = d3.scaleLinear().domain([0, 150]).range([0, width]);
             const yScale = d3.scaleLinear()
                 .domain([chartDataSets[index].alignedMinY, chartDataSets[index].alignedMaxY])
                 .range([height, 0]);
@@ -100,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .call(yAxis);
     
             // **Update the x-axis**
-            const xAxis = d3.axisBottom(xScale).tickValues(d3.range(0, 181, 20));
+            const xAxis = d3.axisBottom(xScale).tickValues(d3.range(0, 151, 15));
             svg.select(".x-axis")
                 .transition()
                 .duration(750)
@@ -157,33 +226,35 @@ document.addEventListener('DOMContentLoaded', function () {
                     d3.select(`.tooltip-box-${index}`).style("opacity", 0);
                 });
         });
-        d3.select(".graph-pair-description")
-                .transition()
-                .duration(500)
-                .style("opacity", 0) // Fade out
-                .on("end", function() {
-                    d3.select(this)
-                        .html(getDescriptionForFeature(feature))
-                        .transition()
-                        .duration(500)
-                        .style("opacity", 1); // Fade in with new text
-                });
+        if (lastFeature !== feature) {
+            d3.select(".graph-pair-description")
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0) // Fade out
+                    .on("end", function() {
+                        d3.select(this)
+                            .html(getDescriptionForFeature(feature))
+                            .transition()
+                            .duration(500)
+                            .style("opacity", 1); // Fade in with new text
+                    });
+                }
     }
     
-    function getFilePathsForFeature(feature) {
+    function getFilePathsForFeature(feature, student1, student2) {
         switch (feature) {
-            case 'hr': return ['hr/hr_S7_Midterm2.csv', 'hr/hr_S5_Midterm2.csv'];
-            case 'temp': return ['temp/temp_S7_Final.csv', 'temp/temp_S8_Final.csv'];
-            case 'eda': return ['eda/eda_S2_Final.csv', 'eda/eda_S4_Final.csv'];
-            case 'acc': return ['acc/acc_S7_Midterm2.csv', 'acc/acc_S3_Midterm2.csv'];
+            case 'hr': return [`HR3/hr_${student1}_Midterm 2.csv`, `HR3/hr_${student2}_Midterm 2.csv`];
+            case 'temp': return [`TEMP3/temp_${student1}_Midterm 2.csv`, `TEMP3/temp_${student2}_Midterm 2.csv`];
+            case 'eda': return [`EDA3/eda_${student1}_Midterm 2.csv`, `EDA3/eda_${student2}_Midterm 2.csv`];
+            case 'acc': return [`ACC3/acc_${student1}_Midterm 2.csv`, `ACC3/acc_${student2}_Midterm 2.csv`];
             default: return [];
         }
     }
 
     function prepareChartData(csvData, filename) {
         const rows = csvData.split('\n'); // Get all rows
-        const labels = Array.from({ length: 181 }, (_, i) => i);
-        const data = new Array(181).fill(null);
+        const labels = Array.from({ length: 151 }, (_, i) => i);
+        const data = new Array(151).fill(null);
         const headers = rows[0].split(',');  // Extract column headers
 
         // Extract the Y-axis label (real column name)
@@ -199,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (parts.length >= 2) {
                 const minute = parseInt(parts[0], 10);
                 const value = parseFloat(parts[1]);
-                if (!isNaN(minute) && !isNaN(value) && minute <= 180) {
+                if (!isNaN(minute) && !isNaN(value) && minute <= 150) {
                     data[minute] = value;
                 }
             }
@@ -271,10 +342,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 .append("g")
                 .attr("transform", `translate(${margin.left},${margin.top})`);
     
-            const xScale = d3.scaleLinear().domain([0, 180]).range([0, width]);
+            const xScale = d3.scaleLinear().domain([0, 150]).range([0, width]);
             const yScale = d3.scaleLinear().domain([chartData.alignedMinY, chartData.alignedMaxY]).range([height, 0]);
     
-            const xAxis = d3.axisBottom(xScale).tickValues(d3.range(0, 181, 20));
+            const xAxis = d3.axisBottom(xScale).tickValues(d3.range(0, 151, 15));
             const yAxis = d3.axisLeft(yScale).tickValues(d3.ticks(chartData.alignedMinY, chartData.alignedMaxY, 7));
     
             svg.append("g")

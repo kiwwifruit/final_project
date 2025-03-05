@@ -383,6 +383,84 @@ body {
     padding: 10px;
 }
 
+#studentSelect_1 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5e5d5d;
+    padding: 10px 15px;
+    width: 280px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    border: 2px solid #ccc;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    appearance: none; /* Hide default arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23333"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    margin-top: 15px;
+}
+
+/* Hover effect */
+#studentSelect_1:hover {
+    border-color: #007bff;
+}
+
+/* Focus effect */
+#studentSelect_1:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Style dropdown options */
+#studentSelect_1 option {
+    font-size: 16px;
+    background: white;
+    color: black;
+    padding: 10px;
+}
+
+#studentSelect_2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5e5d5d;
+    padding: 10px 15px;
+    width: 280px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    border: 2px solid #ccc;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    appearance: none; /* Hide default arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23333"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    margin-top: 15px;
+}
+
+/* Hover effect */
+#studentSelect_2:hover {
+    border-color: #007bff;
+}
+
+/* Focus effect */
+#studentSelect_2:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Style dropdown options */
+#studentSelect_2 option {
+    font-size: 16px;
+    background: white;
+    color: black;
+    padding: 10px;
+}
+
 /* Wrapper for both graphs */
 .graph-group-container {
     background: white;
@@ -564,6 +642,14 @@ body {
     display: flex;
     justify-content: center;
     gap: 50px; /* Adjust spacing between dropdowns */
+    align-items: center;
+    flex-wrap: wrap; /* Prevent overflow on smaller screens */
+}
+
+.select-two-group {
+    display: flex;
+    justify-content: center;
+    gap: 200px; /* Adjust spacing between dropdowns */
     align-items: center;
     flex-wrap: wrap; /* Prevent overflow on smaller screens */
 }

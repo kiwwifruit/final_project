@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // Instead of clearing, update the charts smoothly
             if (d3.select(".triple-graph-container").empty()) {
-                renderCharts(chartDataSets, feature, student);
+                rendersCharts(chartDataSets, feature, student);
             } else {
                 updateGraphData(chartDataSets, feature, student);
             }
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const height = baseHeight - margin.top - margin.bottom;
     
             // Define x-axis ranges
-            const xDomain = index === 2 ? [0, 240] : [0, 160]; // Final has twice the length
+            const xDomain = index === 2 ? [0, 240] : [0, 150]; // Final has twice the length
             const xScale = d3.scaleLinear().domain(xDomain).range([0, width]);
     
             const yScale = d3.scaleLinear()
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .call(yAxis);
     
             // **Update the x-axis**
-            const xTicks = index === 2 ? d3.range(0, 361, 40) : d3.range(0, 181, 20);
+            const xTicks = index === 2 ? d3.range(0, 361, 40) : d3.range(0, 151, 15);
             const xAxis = d3.axisBottom(xScale).tickValues(xTicks);
             svg.select(".x-axis")
                 .transition()
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
         // Determine if this is a midterm (181 minutes) or final (361 minutes)
         const isFinal = filename.includes("Final");
-        const maxMinutes = isFinal ? 240 : 160;
+        const maxMinutes = isFinal ? 240 : 150;
         
         // Create labels and data array based on exam type
         const labels = Array.from({ length: maxMinutes + 1 }, (_, i) => i);
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chartDataSets[2].alignedMaxY = maxY;
     }
 
-    function renderCharts(chartDataSets, feature) {
+    function rendersCharts(chartDataSets, feature) {
         const chartsContainers = document.getElementById('chartsContainers');
         chartsContainers.innerHTML = '';
     
@@ -319,14 +319,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const height = svgHeight - margin.top - margin.bottom;
     
             // Set x-axis scale
-            const xDomain = isFinal ? [0, 240] : [0, 160]; // Final is twice as long
+            const xDomain = isFinal ? [0, 240] : [0, 150]; // Final is twice as long
             const xScale = d3.scaleLinear().domain(xDomain).range([0, width]);
     
             const yScale = d3.scaleLinear()
                 .domain([chartData.alignedMinY, chartData.alignedMaxY])
                 .range([height, 0]);
     
-            const xTicks = isFinal ? d3.range(0, 361, 40) : d3.range(0, 181, 20);
+            const xTicks = isFinal ? d3.range(0, 361, 40) : d3.range(0, 151, 15);
             const xAxis = d3.axisBottom(xScale).tickValues(xTicks);
             const yAxis = d3.axisLeft(yScale).tickValues(d3.ticks(chartData.alignedMinY, chartData.alignedMaxY, 7));
     
