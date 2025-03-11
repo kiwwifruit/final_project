@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    function getsDescriptionForFeature(feature) {
+    function getDescriptionForFeature(feature) {
         switch (feature) {
             case 'hr':
                 return "Heart rate (HR) measured in beats per minute increases as stress triggers the fight-or-flight response, releasing adrenaline.\
@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;Minimal movement may indicate passivity, while excessive or erratic movement can signal stress and lower scores.";
         }
     }
-    
     function updateGraphData(chartDataSets, feature) {
         const pairContainer = d3.select(".pair-graph-container");
     
