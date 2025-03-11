@@ -93,26 +93,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    function getDescriptionForFeature(feature) {
+    function getsDescriptionForFeature(feature) {
         switch (feature) {
             case 'hr':
                 return "Heart rate (HR) measured in beats per minute increases as stress triggers the fight-or-flight response, releasing adrenaline.\
-                <br>Stable, elevated heart rates correlate with better focus and higher grades.\
-                <br>Erratic fluctuations are linked to stress-related distraction and lower performance.";
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;Stable, elevated heart rates correlate with better focus and higher grades.\
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;Erratic fluctuations are linked to stress-related distraction and lower performance.";
             case 'temp':
                 return "Temperature (TEMP) in Celsius measures wrist skin temperature, which increases due to stress-induced metabolic heat output.\
-                <br>Moderate, stable increases suggest controlled stress and improved performance.\
-                <br>Excessive drops may indicate disengagement, while erratic fluctuations suggest poor stress regulation, both linked to lower grades.";
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;Moderate, stable increases suggest controlled stress and improved performance.\
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;Excessive drops may indicate disengagement, while erratic fluctuations suggest poor stress regulation, both linked to lower grades.";
             case 'eda':
                 return "Electrodermal Activity (EDA) in microsiemens measures skin electrical conductance, which increases due to stress-stimulated sweat gland activity.\
-                <br>Quick recovery from initial stress spikes is correlated with better exam performance.\
-                <br>Sustained high EDA levels indicate prolonged stress and are linked to lower grades.";
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;Quick recovery from initial stress spikes is correlated with better exam performance.\
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;Sustained high EDA levels indicate prolonged stress and are linked to lower grades.";
             case 'acc':
                 return "Acceleration (ACC) in meters per second squared measures body movement, where physical activity helps alleviate stress and muscle tension.\
-                <br>Moderate, consistent movement suggests active problem-solving and correlates with higher performance.\
-                <br>Minimal movement may indicate passivity, while excessive or erratic movement can signal stress and lower scores.";
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;Moderate, consistent movement suggests active problem-solving and correlates with higher performance.\
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;Minimal movement may indicate passivity, while excessive or erratic movement can signal stress and lower scores.";
         }
     }
+    
     function updateGraphData(chartDataSets, feature) {
         const pairContainer = d3.select(".pair-graph-container");
     
