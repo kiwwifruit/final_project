@@ -7,7 +7,18 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+    <nav id="sidebar">
+        <ul>
+            <li><a href="#top">Back to Top</a></li>
+            <li><a href="#top">Features</a></li> <!-- TODO: change link -->
+            <li><a href="#section1">Section 1</a></li>
+            <li><a href="#section2">Section 2</a></li>
+            <li><a href="#section3">Section 3</a></li>
+        </ul>
+    </nav>
+    <div id="top"></div>
     <div id="header-container">
     <h1 id="main-title">Do Stress Patterns During Exams Reveal Hidden Insights About Students' Performance?</h1>
     <p id="subtitle">Stress plays a significant role in how students perform during exams.
@@ -17,7 +28,7 @@
         by a smartwatch-like device worn on their non-dominant hand throughout the exam period.</p>
     </div>
     <div class="graph-group-container">
-        <h2>Section 1: How Do Individual Physiological Factors Relate to Exam Performance?</h2>
+        <h2 id="section1">Section 1: How Do Individual Physiological Factors Relate to Exam Performance?</h2>
         <p id="description1">Use the <strong>dropdown menu</strong> to select different markers and 
             compare their patterns across different students.<br>
             Each of the paired graphs will compare two students with their grades in Midterm 2. 
@@ -77,7 +88,7 @@
     </div>
 
     <div class="graph-group-container">
-        <h2>Section 2: How Do Physiological Factors Fluctuate Throughout Different Exams?</h2>
+        <h2 id="section2">Section 2: How Do Physiological Factors Fluctuate Throughout Different Exams?</h2>
         <p id="description1">This visualization helps identify patterns in <strong>stress, focus, and performance trends</strong> across different exam sessions.
             Use the <strong>dropdown menus</strong> to select a <strong>student</strong> and a <strong>physiological feature</strong>, 
             then observe how it changes over time during <strong>Midterm 1, Midterm 2, and the Final Exam</strong>. 
@@ -120,7 +131,7 @@
     <br><br>
     <div class="pred-graph-box">
     <div class="pred-graph-container">
-    <h2>Section 3: How Do Multiple Factors Combine to Predict Exam Grades?</h2>
+    <h2 id="section3">Section 3: How Do Multiple Factors Combine to Predict Exam Grades?</h2>
     <p id="description1">While each factor provides valuable information, real-life stress responses are complex.
         This section allows you to explore how combinations of physiological markers work together to predict a 
         student’s exam grade. 

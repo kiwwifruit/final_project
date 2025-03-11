@@ -468,7 +468,7 @@ body {
     border-radius: 12px;  /* Rounded corners */
     padding: 20px;
     margin: 30px auto;
-    width: 95%;
+    width: 75%;
     max-width: 1200px;  /* Adjust width to fit both graphs */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);  /* Subtle shadow */
     transition: all 0.3s ease-in-out;
@@ -583,7 +583,7 @@ body {
     border-radius: 12px;  /* Rounded corners */
     padding: 20px;
     margin: 30px auto;
-    width: 95%;
+    width: 75%;
     max-width: 1200px;  /* Adjust width to fit both graphs */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);  /* Subtle shadow */
     transition: all 0.3s ease-in-out;
@@ -653,3 +653,43 @@ body {
     align-items: center;
     flex-wrap: wrap; /* Prevent overflow on smaller screens */
 }
+
+/* nav bar */
+#sidebar {
+    position: fixed;
+    top: 2%;
+    left: 0;
+    width: 100px;
+    height: 20%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar li {
+    margin-bottom: 15px;
+}
+
+#sidebar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#content {
+    margin-left: 260px; /* width of the sidebar plus some margin */
+    padding: 20px;
+}
+
+h2 {
+    scroll-margin-top: 50px;
+}
+
+#top {
+    scroll-margin-top: 50px;
+}
+
