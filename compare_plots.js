@@ -14,29 +14,45 @@ document.addEventListener('DOMContentLoaded', function () {
         updateCharts(currentFeature, currentStudent1, currentStudent2);
     });
 
-    function updateStudentOptions() {
-        // Get selected values
-        let selected1 = studentSelect1.value;
-        let selected2 = studentSelect2.value;
-    
-        // Loop through all options in both dropdowns
-        studentSelect1.querySelectorAll("option").forEach(option => {
-            option.disabled = option.value === selected2; // Disable selected2 in studentSelect1
-        });
-    
-        studentSelect2.querySelectorAll("option").forEach(option => {
-            option.disabled = option.value === selected1; // Disable selected1 in studentSelect2
-        });
-    
-        // If both dropdowns have the same value, adjust studentSelect2
-        if (selected1 === selected2) {
-            let availableOptions = [...studentSelect2.options].filter(option => !option.disabled);
-            if (availableOptions.length > 0) {
-                studentSelect2.value = availableOptions[0].value;
-                currentStudent2 = studentSelect2.value; // Update currentStudent2
-            }
+// Example student-grade mapping (Replace with actual data source)
+const studentGrades = {
+    "S1": "82.0%",
+    "S2": "85.0%",
+    "S3": "90.0%",
+    "S4": "77.0%",
+    "S5": "77.0%",
+    "S6": "64.0%",
+    "S7": "33.0%",
+    "S8": "88.0%",
+    "S9": "39.0%",
+    "S10": "64.0%"
+};
+
+function updateStudentOptions() {
+    // Get selected values
+    let selected1 = studentSelect1.value;
+    let selected2 = studentSelect2.value;
+
+    // Update options in both dropdowns
+    studentSelect1.querySelectorAll("option").forEach(option => {
+        option.disabled = option.value === selected2; // Disable selected2 in studentSelect1
+        option.textContent = `${option.value} \u00A0\u00A0(Grade: ${studentGrades[option.value] || "N/A"})`; // Update label
+    });
+
+    studentSelect2.querySelectorAll("option").forEach(option => {
+        option.disabled = option.value === selected1; // Disable selected1 in studentSelect2
+        option.textContent = `${option.value} \u00A0\u00A0(Grade: ${studentGrades[option.value] || "N/A"})`; // Update label
+    });
+
+    // If both dropdowns have the same value, adjust studentSelect2
+    if (selected1 === selected2) {
+        let availableOptions = [...studentSelect2.options].filter(option => !option.disabled);
+        if (availableOptions.length > 0) {
+            studentSelect2.value = availableOptions[0].value;
+            currentStudent2 = studentSelect2.value; // Update currentStudent2
         }
     }
+}
     
     // Attach event listeners with option update logic
     studentSelect1.addEventListener('change', function() {
@@ -269,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return {
             labels,
             data,
-            label: `${filename.match(/S\d+/)?.[0]} - ${yLabel} vs. Minutes - Grade: ${grade}`,
+            label: `${yLabel} vs. Minutes`,
             yLabel,  // Extract "S6" from filename
             grade,  // Store extracted grade
             average: average.toFixed(2),
