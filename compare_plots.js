@@ -96,35 +96,21 @@ document.addEventListener('DOMContentLoaded', function () {
     function getDescriptionForFeature(feature) {
         switch (feature) {
             case 'hr':
-                return "* Heart rate (HR) indicates both physical stress and cognitive engagement. \
-                S7 exhibits frequent heart rate spikes throughout the exam, suggesting difficulty managing \
-                stress. In contrast, S5 maintains a generally elevated yet stable heart rate, suggesting \
-                sustained cognitive effort and focus.\
-                <br><br> * Higher heart rates, when consistent rather than erratic, are associated with improved \
-                concentration and better exam performance. Rapid and unpredictable fluctuations may indicate \
-                stress-related distraction and hinder cognitive performance.";
+                return "Heart rate (HR) measured in beats per minute increases as stress triggers the fight-or-flight response, releasing adrenaline.\
+                <br>Stable, elevated heart rates correlate with better focus and higher grades.\
+                <br>Erratic fluctuations are linked to stress-related distraction and lower performance.";
             case 'temp':
-                return "* Skin temperature (TEMP) changes can indicate stress-related physiological responses, \
-                such as blood vessel constriction. S7 shows significant fluctuations with lower baseline \
-                temperatures, suggesting stress responses at various stages of the exam or disengagement. \
-                In contrast, S8 maintains a stable, slightly elevated temperature throughout the exam, \
-                indicating calmness and sustained focus. \
-                <br><br> * Consistent body temperature suggests better stress management and a higher potential for good performance.";
+                return "Temperature (TEMP) in Celsius measures wrist skin temperature, which increases due to stress-induced metabolic heat output.\
+                <br>Moderate, stable increases suggest controlled stress and improved performance.\
+                <br>Excessive drops may indicate disengagement, while erratic fluctuations suggest poor stress regulation, both linked to lower grades.";
             case 'eda':
-                return "* Electrodermal Activity (EDA) measures skin electrical conductance as a quantitative indicator of how much you sweat, \
-                serving as a direct measurement of emotional stress. S2 shows a brief spike at the beginning—likely \
-                due to initial nervousness—followed by a calm, stable pattern. In contrast, S4 experiences high, \
-                sustained EDA early on, reflecting ongoing stress. \
-                <br><br> * Higher grades are associated with quick recovery from initial anxiety. \
-                Students who manage to calm down shortly after starting the exam generally perform better.";
+                return "Electrodermal Activity (EDA) in microsiemens measures skin electrical conductance, which increases due to stress-stimulated sweat gland activity.\
+                <br>Quick recovery from initial stress spikes is correlated with better exam performance.\
+                <br>Sustained high EDA levels indicate prolonged stress and are linked to lower grades.";
             case 'acc':
-                return "* The accelerometer records acceleration (ACC) as a measurement of body movement, which can \
-                reflect cognitive engagement or attempts to manage stress. S3 shows elevated movement levels \
-                throughout the exam, especially during the early stages, suggesting active thinking and \
-                problem-solving. In contrast, S7 maintains low movement for most of the exam, possibly indicating \
-                passivity. However, there is a notable spike near the end, which may represent growing discomfort, \
-                rushed attempts to complete remaining questions, or late-stage stress. \
-                <br><br> * Higher movement values appear to correlate with better performance, potentially reflecting cognitive effort. However, constant fidgeting or sudden movement spikes can be signs of stress-related distraction, potentially leading to lower scores.";
+                return "Acceleration (ACC) in meters per second squared measures body movement, where physical activity helps alleviate stress and muscle tension.\
+                <br>Moderate, consistent movement suggests active problem-solving and correlates with higher performance.\
+                <br>Minimal movement may indicate passivity, while excessive or erratic movement can signal stress and lower scores.";
         }
     }
     function updateGraphData(chartDataSets, feature) {
