@@ -770,3 +770,170 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+.feature {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align icons and text properly */
+    gap: 40px; /* Consistent spacing */
+    max-width: 1000px;
+    margin: auto;
+}
+
+.animation-container {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center;
+    width: 300px;
+    position: relative;
+}
+
+.animation-container label {
+    display: block; /* Creates spacing between image and sliders */
+}
+
+.description {
+    text-align: left;
+    max-width: 600px;
+    font-size: 18px;
+    font-weight: 400; /* Slightly lighter text */
+    color: #444; /* Darker gray for contrast */
+    line-height: 1.6;
+    margin: 0 auto; /* Centers within max-width */
+    margin-bottom: 20px;
+}
+
+/* Heart Icon */
+.heart{
+    width: 150px;
+}
+
+.temp{
+    width: 150px;
+}
+
+.hand{
+    width: 170px;
+}
+
+/* Slider Styling */
+#bpm-slider {
+    -webkit-appearance: none;
+    width: 150px;
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #e66b6b 40%, #cccccc 40%);
+    outline: none;
+    transition: background 0.3s;
+    margin-top: 10px; /* Adds spacing between heart and slider */
+}
+
+/* Custom Slider Thumb */
+#bpm-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e66b6b;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#bpm-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* BPM Label */
+.bpm-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+#x-slider, #y-slider, #z-slider {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 10px;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+/* 🔴 X-Axis (Red) */
+#y-slider {
+    background: linear-gradient(to right, #ff4c4c 0%, #cccccc 0%);
+}
+
+#y-slider::-webkit-slider-runnable-track {
+    background: transparent;
+}
+
+#y-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #ff4c4c;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: -4px;
+}
+
+/* 🟢 Y-Axis (Green) */
+#z-slider {
+    background: linear-gradient(to right, #4caf50 0%, #cccccc 0%);
+}
+
+#z-slider::-webkit-slider-runnable-track {
+    background: transparent;
+}
+
+#z-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #4caf50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: -4px;
+}
+
+/* 🔵 Z-Axis (Blue) */
+#x-slider {
+    background: linear-gradient(to right, #3f51b5 0%, #cccccc 0%);
+}
+
+#x-slider::-webkit-slider-runnable-track {
+    background: transparent;
+}
+
+#x-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #3f51b5;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: -4px;
+}
+
+/* Make Euclidean Distance bold and sky blue */
+#distance-value {
+    font-weight: bold;
+    color: #00aaff; /* Sky blue */
+    font-size: 18px;
+}
+
+label {
+    display: block; /* Ensure each slider appears on a new line */
+    margin-top: 40px; /* Force them lower */
+}

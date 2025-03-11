@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Score and Physiological Feature Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="global.css">
 </head>
 
 <body>
@@ -31,51 +33,75 @@
     </div>
     <div class="graph-group-container">
         <h2 id="features">Features / Markers: What Are These Mystery Abbreviations?</h2>
-        <!-- Heart Rate -->
-        <div class="feature">
-            <div class="animation-container">
-                <div class="heart" id="heart"></div>
-            </div>
-            <div class="description">
-                <h3>HR (Heart Rate)</h3>
-                <p>Heart rate measures the number of beats per minute (BPM). It provides insights into cardiovascular health.</p>
-            </div>
-        </div>
-
         <!-- Acceleration -->
+        <br><br>
         <div class="feature">
-            <div class="animation-container">
-                <div class="ball" id="ball"></div>
+            <div class="animation-container" id="3d-human">
+                <script defer src="acc.js"></script>
+                <p>Euclidean Distance: <span id="distance-value">0.00</span></p>
             </div>
-            <div class="description">
-                <h3>ACC (Acceleration)</h3>
-                <p>Acceleration measures motion changes and movement patterns.</p>
-            </div>
-        </div>
-
-        <!-- Electrodermal Activity -->
-        <div class="feature">
-            <div class="animation-container">
-                <div class="wave" id="wave"></div>
-            </div>
-            <div class="description">
-                <h3>EDA (Electrodermal Activity)</h3>
-                <p>EDA tracks electrical conductance in the skin, often linked to stress levels.</p>
-            </div>
-        </div>
-
-        <!-- Temperature -->
-        <div class="feature">
-            <div class="animation-container">
-                <div class="thermometer">
-                    <div class="mercury" id="mercury"></div>
+                <div class="slider-container">
+                <label>X: <input type="range" id="x-slider" min="-6" max="6" step="0.2" value="0"></label>
+                <label>Y: <input type="range" id="y-slider" min="-6" max="6" step="0.2" value="0"></label>
+                <label>Z: <input type="range" id="z-slider" min="-6" max="6" step="0.2" value="0"></label>
                 </div>
-            </div>
             <div class="description">
-                <h3>TEMP (Temperature)</h3>
-                <p>Monitors body or environmental temperature to detect changes in physiological state.</p>
+                <h3>Acceleration (ACC)</h3>
+                <p>The accelerometer records acceleration (ACC) as a measurement of body movement, which can
+                    reflect cognitive engagement or attempts to manage stress. Higher movement values appear to 
+                    correlate with better performance, potentially reflecting cognitive effort. However, constant 
+                    fidgeting or sudden movement spikes can be signs of stress-related distraction, 
+                    potentially leading to lower scores.</p>
             </div>
         </div>
+        
+        <!-- Electrodermal Activity -->
+        <br><br>
+        <div class="feature">
+            <div class="animation-container">
+                <img src="assets/hand.jpg" class="hand" id="hand">
+            </div>
+            <div class="description">
+                <h3>Electrodermal Activity (EDA)</h3>
+                <p>Electrodermal Activity (EDA) measures skin electrical conductance as a quantitative indicator of how much you sweat, 
+                    serving as a direct measurement of emotional stress. Higher grades are associated with quick recovery from initial anxiety.
+                    Students who manage to calm down shortly after starting the exam generally perform better.</p>
+            </div>
+        </div>
+
+        <!-- Heart Rate -->
+        <br><br>
+        <div class="feature">
+            <div class="animation-container">
+                <img src="assets/heart.svg" class="heart" id="heart">
+                <input type="range" id="bpm-slider" min="50" max="180" value="75">
+                <p class="bpm-label">BPM: <span id="bpm-value">75</span></p>
+                <audio id="heartbeat-sound" src="assets/heartbeat.mp3"></audio>
+            </div>
+            <div class="description">
+                <h3>Heart Rate (HR)</h3>
+                <p><strong>Adjust the BPM slider to listen to the heart beat! (Scroll to stop)</strong></p>
+                <p>Heart Rate (HR) indicates both physical stress and cognitive engagement.
+                    Higher heart rates, when consistent rather than erratic, are associated with improved
+                    concentration and better exam performance. Rapid and unpredictable fluctuations may indicate
+                    stress-related distraction and hinder cognitive performance.</p>
+            </div>
+        </div>
+        
+        <!-- Temperature -->
+        <br><br>
+        <div class="feature">
+            <div class="animation-container">
+                <img src="assets/temperature.svg" class="temp" id="temp">
+            </div>
+            <div class="description">
+                <h3>Temperature (TEMP)</h3>
+                <p>Skin temperature (TEMP) changes can indicate stress-related physiological responses,
+                    such as blood vessel constriction. Consistent body temperature suggests better stress 
+                    management and a higher potential for good performance.</p>
+            </div>
+        </div>
+        <script defer src="features.js"></script>
     </div>
     <div class="graph-group-container">
         <h2 id="section1">Section 1: How Do Individual Physiological Factors Relate to Exam Performance?</h2>
@@ -245,7 +271,8 @@
         </p>
         <p><strong>Source</strong>: The dataset used in this visualization is based on the work: Amin, M. R., Wickramasuriya, D., & Faghih, R. T. (2022). 
             <br> A Wearable Exam Stress Dataset for Predicting Cognitive Performance in Real-World Settings (version 1.0.0). 
-            PhysioNet. https://doi.org/10.13026/kvkb-aj90.</p>
+            PhysioNet. https://doi.org/10.13026/kvkb-aj90.
+            <br> The abbreviation icons used on this website are from <a href="https://www.svgrepo.com/">SVGREPO</a>. The sound effects are from  <a href="https://elements.envato.com/">envato</a>. We are very grateful for their free resources!</p>
         <p>For more information about the dataset, please visit the <a href="https://physionet.org/content/wearable-exam-stress/1.0.0/">PhysioNet website</a>. For more information about the project, please read <a href="https://docs.google.com/document/d/16PU-HTPSYSINC1JWICOQHc-yPRQqnTjSzBKgubQLWK8/edit?usp=sharing">Project Writeup</a>.</p>  
     </div>
 </body>
