@@ -9,15 +9,17 @@
 </head>
 
 <body>
-    <nav id="sidebar">
+    <button id="menu-button">☰</button>
+    <div id="sidebar">
         <ul>
-            <li><a href="#top">Back to Top</a></li>
-            <li><a href="#top">Features</a></li> <!-- TODO: change link -->
+            <li><a href="#features">Features</a></li>
             <li><a href="#section1">Section 1</a></li>
             <li><a href="#section2">Section 2</a></li>
             <li><a href="#section3">Section 3</a></li>
+            <li><a href="#top">Back to Top</a></li>
         </ul>
-    </nav>
+    </div>
+    <script src="menu.js"></script>
     <div id="top"></div>
     <div id="header-container">
     <h1 id="main-title">Do Stress Patterns During Exams Reveal Hidden Insights About Students' Performance?</h1>
@@ -26,6 +28,54 @@
         sweat response, heart rate, and skin temperature—relate to exam grades by examining individual features and their
         combinations. The dataset includes exam data from 10 students across three exams, with their stress markers tracked 
         by a smartwatch-like device worn on their non-dominant hand throughout the exam period.</p>
+    </div>
+    <div class="graph-group-container">
+        <h2 id="features">Features / Markers: What Are These Mystery Abbreviations?</h2>
+        <!-- Heart Rate -->
+        <div class="feature">
+            <div class="animation-container">
+                <div class="heart" id="heart"></div>
+            </div>
+            <div class="description">
+                <h3>HR (Heart Rate)</h3>
+                <p>Heart rate measures the number of beats per minute (BPM). It provides insights into cardiovascular health.</p>
+            </div>
+        </div>
+
+        <!-- Acceleration -->
+        <div class="feature">
+            <div class="animation-container">
+                <div class="ball" id="ball"></div>
+            </div>
+            <div class="description">
+                <h3>ACC (Acceleration)</h3>
+                <p>Acceleration measures motion changes and movement patterns.</p>
+            </div>
+        </div>
+
+        <!-- Electrodermal Activity -->
+        <div class="feature">
+            <div class="animation-container">
+                <div class="wave" id="wave"></div>
+            </div>
+            <div class="description">
+                <h3>EDA (Electrodermal Activity)</h3>
+                <p>EDA tracks electrical conductance in the skin, often linked to stress levels.</p>
+            </div>
+        </div>
+
+        <!-- Temperature -->
+        <div class="feature">
+            <div class="animation-container">
+                <div class="thermometer">
+                    <div class="mercury" id="mercury"></div>
+                </div>
+            </div>
+            <div class="description">
+                <h3>TEMP (Temperature)</h3>
+                <p>Monitors body or environmental temperature to detect changes in physiological state.</p>
+            </div>
+        </div>
     </div>
     <div class="graph-group-container">
         <h2 id="section1">Section 1: How Do Individual Physiological Factors Relate to Exam Performance?</h2>
@@ -127,8 +177,6 @@
     <!-- Dynamic charts container -->
         <div id="chartsContainers" style="display: flex; justify-content: space-around; flex-wrap: wrap;"></div>
     </div>
-
-    <br><br>
     <div class="pred-graph-box">
     <div class="pred-graph-container">
     <h2 id="section3">Section 3: How Do Multiple Factors Combine to Predict Exam Grades?</h2>

@@ -654,42 +654,119 @@ body {
     flex-wrap: wrap; /* Prevent overflow on smaller screens */
 }
 
-/* nav bar */
+
+/* Sidebar - Hidden by default */
 #sidebar {
     position: fixed;
-    top: 2%;
-    left: 0;
-    width: 100px;
-    height: 20%;
-    padding: 20px;
-    overflow-y: auto;
+    top: 0;
+    left: 0; /* Keep it at the same position */
+    width: 15%;
+    height: 100vh;
+    background-color: rgba(248, 249, 250, 0.95);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0; /* Hide by default */
+    visibility: hidden; /* Prevent interactions */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 1000; /* Ensures it stays above content */
 }
 
+/* Show the sidebar when active */
+#sidebar.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Sidebar navigation */
 #sidebar ul {
     list-style: none;
     padding: 0;
+    width: 100%;
+    margin-top: 80px;
 }
 
 #sidebar li {
     margin-bottom: 15px;
+    text-align: center;
 }
 
 #sidebar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: #333;
+    font-size: 14px;
     font-weight: bold;
+    padding: 10px 0;
+    width: 100%;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Sidebar hover effect */
+#sidebar a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Menu button */
+#menu-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1100;
+    padding: 5px 10px; /* Adds spacing inside the button */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #e9e7e7;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#menu-button:hover {
+    color: #007bff;
+}
+
+/* Content area - Adjust dynamically */
 #content {
-    margin-left: 260px; /* width of the sidebar plus some margin */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
+    transition: none;
 }
 
-h2 {
-    scroll-margin-top: 50px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 20%;
+    }
 }
 
-#top {
-    scroll-margin-top: 50px;
+@media (max-width: 480px) {
+    #sidebar {
+        width: 25%;
+    }
 }
 
+.graph-group-container,
+.pred-graph-box,
+#chart-container {
+    max-width: 1100px; /* Prevents excessive width */
+    width: 100%;
+    margin: 0 auto; /* Keeps it centered */
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Enable smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
