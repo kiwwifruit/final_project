@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return {
             labels,
             data,
-            label: `${filename.match(/S\d+/)?.[0]} - ${yLabel} vs. Minutes - Grade: ${grade}`,
+            label: `${filename.match(/(?<=S\d_)[^\.]+/)?.[0]} <br> ${yLabel} vs. Minutes - Grade: ${grade}`,
             yLabel,  
             grade,  
             average: average.toFixed(2),
