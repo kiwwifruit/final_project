@@ -47,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Color scale
         const colorScale = d3.scaleOrdinal()
                             .domain(["High", "Medium", "Low", "Very Low"])
-                            .range(["#d45050", "#FADADD", "#ADD8E6", "#3186d5"]);
+                            .range(["#357521", "#bcf081", "#FADADD", "#d45050"]);
+
         // Legend position
         // Create the legend container on the left
         const legend = svg.append("g")
@@ -74,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .attr("cx", (d, i) => i * 120) // Position each circle horizontally
         .attr("cy", 0) // Align in a row
         .attr("r", 8)
-        .style("fill", d => d === "Prediction" ? "green" : colorScale(d));
+        .style("fill", d => d === "Prediction" ? "#3186d5" : colorScale(d));
 
         legend.selectAll("legend-labels")
         .data(legendData)
@@ -113,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .datum(initialLineData)
                 .attr("class", "movable-line-shadow")
                 .attr("d", path)
-                .style("stroke", "rgb(213, 235, 193)")  // Light shadow color
+                .style("stroke", "rgb(173, 216, 230)")  // Light shadow color
                 .style("stroke-width", 10)
                 .style("fill", "none");
 
@@ -122,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         .datum(initialLineData)
                                         .attr("class", "movable-line")
                                         .attr("d", path)
-                                        .style("stroke", "green")
+                                        .style("stroke", "#3186d5")
                                         .style("stroke-width", 3)
                                         .style("fill", "none");
         // Add the actual bold movable line
