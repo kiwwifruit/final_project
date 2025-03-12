@@ -131,6 +131,11 @@ body {
     text-align: center;
 }
 
+.triple-graph {
+    width: 100%;
+    text-align: center;
+}
+
 /* Graph Titles (S6 - Grade: 0.90) */
 .pair-graph-title {
     font-size: 22px;
@@ -534,13 +539,13 @@ body {
     font-size: 16px;
     font-weight: 400;
     color: #605f5f; /* Darker gray for better contrast */
-    text-align: left; /* Centers the text */
+    text-align: center; /* Centers the text */
     margin-top: 10px; /* Space between graphs and description */
     padding: 10px 15px; /* Adds some spacing inside the box */
     background: #f8f8f8; /* Light gray background */
     border-radius: 8px; /* Soft rounded corners */
     border: 1px solid #ddd; /* Light border for subtle separation */
-    max-width: 1100px; /* Prevents it from stretching too wide */
+    max-width: 2000px; /* Prevents it from stretching too wide */
     margin-left: auto;
     margin-right: auto;
     margin-top: 5px;
@@ -549,29 +554,13 @@ body {
     font-size: 16px;
     font-weight: 400;
     color: #605f5f; /* Darker gray for better contrast */
-    text-align: left; /* Centers the text */
+    text-align: center; /* Centers the text */
     margin-top: 10px; /* Space between graphs and description */
     padding: 10px 15px; /* Adds some spacing inside the box */
     background: #f8f8f8; /* Light gray background */
     border-radius: 8px; /* Soft rounded corners */
     border: 1px solid #ddd; /* Light border for subtle separation */
-    max-width: 1100px; /* Prevents it from stretching too wide */
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-}
-
-.graphs-description {
-    font-size: 16px;
-    font-weight: 400;
-    color: #605f5f; /* Darker gray for better contrast */
-    text-align: left; /* Centers the text */
-    margin-top: 10px; /* Space between graphs and description */
-    padding: 10px 15px; /* Adds some spacing inside the box */
-    background: #f8f8f8; /* Light gray background */
-    border-radius: 8px; /* Soft rounded corners */
-    border: 1px solid #ddd; /* Light border for subtle separation */
-    max-width: 1100px; /* Prevents it from stretching too wide */
+    max-width: 800px; /* Prevents it from stretching too wide */
     margin-left: auto;
     margin-right: auto;
     margin-top: 5px;
