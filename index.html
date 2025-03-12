@@ -24,10 +24,10 @@
     <script src="menu.js"></script>
     <div id="top"></div>
     <div id="header-container">
-    <h1 id="main-title">Do Stress Patterns During Exams Reveal Hidden Insights About Students' Performance?</h1>
+    <h1 id="main-title">Do Stress Patterns During Exams Reveal <br>Hidden Insights into Student Performance?</h1>
     <p id="subtitle">Stress significantly impacts student performance during exams.
-        This dynamic visualization explores how physiological stress markers, such as body movement, sweat response, heart rate, and skin temperature, correlate with exam grades, both individually and in combination. 
-        The dataset includes exam data from 10 students across three exams, with stress markers tracked using a smartwatch-like device worn on their non-dominant hand throughout the exam period.</p>
+        <br>This dynamic visualization explores how physiological stress markers, such as body movement, sweating, heart rate, and skin temperature, correlate with exam grades, both individually and in combination. 
+        <br>The dataset includes exam data from 10 students across three exams, with stress markers tracked using a smartwatch-like device worn on their non-dominant hand throughout the exam period.</p>
     </div>
     <div class="graph-group-container">
         <h2 id="features">Features / Markers: What Are These Mystery Abbreviations?</h2>
@@ -45,7 +45,7 @@
                 </div>
             <div class="description">
                 <h3>Acceleration (ACC)</h3>
-                <p>Acceleration (ACC) in meters per second squared measures body movement, where physical activity helps alleviate stress and muscle tension.</p>
+                <p>Acceleration (ACC) in meters per second squared measures (m/s^2) body movement, where physical activity helps alleviate stress and muscle tension.</p>
             </div>
         </div>
         
@@ -57,7 +57,7 @@
             </div>
             <div class="description">
                 <h3>Electrodermal Activity (EDA)</h3>
-                <p>Electrodermal Activity (EDA) in microsiemens measures skin electrical conductance, which increases due to stress-stimulated sweat gland activity.</p>
+                <p>Electrodermal Activity (EDA) in microsiemens (μS) measures skin electrical conductance, which increases due to stress-stimulated sweat gland activity.</p>
             </div>
         </div>
 
@@ -73,7 +73,7 @@
             <div class="description">
                 <h3>Heart Rate (HR)</h3>
                 <p><strong>Adjust the BPM slider to listen to the heart beat! (Scroll to stop)</strong></p>
-                <p>Heart rate (HR) measured in beats per minute increases as stress triggers the fight-or-flight response, releasing adrenaline.</p>
+                <p>Heart rate (HR) measured in beats per minute (bpm) increases as stress triggers the fight-or-flight response, releasing adrenaline.</p>
             </div>
         </div>
         
@@ -85,22 +85,17 @@
             </div>
             <div class="description">
                 <h3>Temperature (TEMP)</h3>
-                <p>Temperature (TEMP) in Celsius measures wrist skin temperature, which increases due to stress-induced metabolic heat output.</p>
+                <p>Temperature (TEMP) in Celsius (℃) measures wrist skin temperature, which increases due to stress-induced metabolic heat output.</p>
             </div>
         </div>
         <script defer src="features.js"></script>
     </div>
     <div class="graph-group-container">
         <h2 id="section1">Section 1: How Do Individual Physiological Factors Relate to Exam Performance?</h2>
-        <p id="description1">Use the <strong>dropdown menu</strong> to select different markers and 
-            compare their patterns across different students.<br>
-            Each of the paired graphs will compare two students with their grades in Midterm 2. 
-            <br><br>Although exam durations were fixed, 
-            the physiological data varied in length, often extending beyond the actual exam period. 
-            To address this, we aligned the start time for all students within exams while incorporating 
-            a <strong>1-hour buffer period </strong>before and after the exam.
-            Since the data for different markers is recorded at different sample rates, 
-            aggregation is done by exam time, with each point representing the average marker value per minute.
+        <p id="description1">Select different markers and compare their patterns across different students with their grades in Midterm 2. 
+            <br><br>Although exam durations were fixed, physiological data varied in length, often extending beyond the exam period. 
+            To standardize this, all start times were aligned, with a 1-hour buffer before and after each exam. 
+            Since markers have different sampling rates, data was aggregated by exam time, with each point representing the average marker value per minute.
             <br><br> The <strong>blue line</strong> shows the marker’s value over time, while the <strong>red dashed line</strong> indicates the average 
             baseline for that marker. 🔍 Hover over the average line to see its exact value. </p>
             <div class="select-container">
