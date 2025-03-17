@@ -17,7 +17,8 @@
             <li><a href="#features">Features</a></li>
             <li><a href="#section1">Section 1: <br>Individual Features</a></li>
             <li><a href="#section2">Section 2: <br>Throughout Exam</a></li>
-            <li><a href="#section3">Section 3: <br>Multivariate Prediction</a></li>
+            <li><a href="#section3">Section 3: <br>MLR Prediction</a></li>
+            <li><a href="#takeaway">Takeaway</a></li>
             <li><a href="#top">Back to Top</a></li>
         </ul>
     </div>
@@ -230,15 +231,29 @@
     <p id="description2">
         The Parallel Coordinates Plot below visualizes how physiological features interact.
         <br>Each vertical axis represents a marker (ACC, EDA, HR, TEMP) or the predicted grade, with each line corresponding to a student's data.
-        <br>Color-coded lines indicate grade groups with Green representing predicted grade line: 
-        <br>Dark Red: High grades(Q1); Light Red: Medium grades(Q2); Light Blue: Low grades(Q3); Dark Blue: Very low grades(Q4);
-        <br>Follow a single line from left to right to see how a student's physiological responses influence their predicted grade. Higher ACC, HR, and TEMP values tend to align with better performance, while elevated EDA often correlates with lower scores.
+        <br><br>Color-coded lines indicate grade groups with Green representing predicted grade line: 
+        <br><span style="color: #4dac26;"><strong>Dark Green</strong></span>: High grades(Q1); 
+        <span style="color: #b8e186;"><strong>Light Green</strong></span>: Medium grades(Q2); 
+        <span style="color: #f1b6da;"><strong>Light Pink</strong></span>: Low grades(Q3); 
+        <span style="color: #d01c8b;"><strong>Dark Pink</strong></span>: Very low grades(Q4);
+        <br>Follow a single line from left to right to see how a student's physiological responses influence their <span style="color: #3186d5;"><strong>predicted grade</strong></span>. 
+        <br><br>Higher ACC, HR, and TEMP values tend to align with better performance, while elevated EDA often correlates with lower scores.
     </p>
     </div>
 
     <!-- Load the JavaScript files -->
     
     <script src="parallel_coordinates.js"></script>
+
+    <div id="takeaway"></div>
+
+    <div class="takeaway-container">
+        <p id="subtitle-t"> <strong>🎯 Key Takeaway 🎯</strong>
+            <br> <i>Moderate stress can boost academic performance!</i> Slight and stable increases in heart rate ❤️, skin temperature 🌡️, and body movement ✍️ correlate with higher exam 
+            scores 📈, while increased sweating 💦 correlates with lower scores 📉, 
+            highlighting that some stress is not just normal, but beneficial for peak performance! — just don’t let it overwhelm you! 🧠✨</p>
+    </div>
+    <br>
     <div id="footnote">
         <p>
             ⚠️ This prediction is based on physiological data collected from students at the University of Houston. 
@@ -248,7 +263,6 @@
             <br> A Wearable Exam Stress Dataset for Predicting Cognitive Performance in Real-World Settings (version 1.0.0). 
             PhysioNet. https://doi.org/10.13026/kvkb-aj90.
             <br> The abbreviation icons used on this website are from <a href="https://www.svgrepo.com/">SVGREPO</a>. The sound effects are from  <a href="https://elements.envato.com/">envato</a>. We are very grateful for their free resources!</p>
-        <p>For more information about the dataset, please visit the <a href="https://physionet.org/content/wearable-exam-stress/1.0.0/">PhysioNet website</a>. For more information about the project, please read <a href="https://docs.google.com/document/d/16PU-HTPSYSINC1JWICOQHc-yPRQqnTjSzBKgubQLWK8/edit?usp=sharing">Project Writeup</a>.</p>  
-    </div>
+        <p>For more information about the dataset, please visit the <a href="https://physionet.org/content/wearable-exam-stress/1.0.0/">PhysioNet website</a>.
 </body>
 </html>

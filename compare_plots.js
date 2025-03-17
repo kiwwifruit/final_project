@@ -93,13 +93,13 @@ function updateStudentOptions() {
             }
 
             if (lastFeature !== feature) {
-                d3.select(".graph-triple-description")
+                d3.select(".graph-pair-description")
                     .transition()
                     .duration(500)
                     .style("opacity", 0) // Fade out
                     .on("end", function() {
                         d3.select(this)
-                            .html(getsDescriptionForFeature(feature)) // Update description
+                            .html(getDescriptionForFeature(feature)) // Update description
                             .transition()
                             .duration(500)
                             .style("opacity", 1); // Fade in with new text

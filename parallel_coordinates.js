@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Color scale
         const colorScale = d3.scaleOrdinal()
                             .domain(["High", "Medium", "Low", "Very Low"])
-                            .range(["#357521", "#bcf081", "#FADADD", "#d45050"]);
+                            .range(["#4dac26", "#b8e186", "#f1b6da", "#d01c8b"]);
 
         // Legend position
         // Create the legend container on the left
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
            .attr("d", path)
            .style("stroke", d => colorScale(d["Label Category"]))
            .style("fill", "none")
-           .style("stroke-width", 1.5)
+           .style("stroke-width", 2)
            .style("opacity", 0.7);
         // Draw the movable prediction line
         // Draw the movable prediction line with a highlighted shadow

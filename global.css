@@ -98,7 +98,6 @@ body {
     font-weight: bold;
     color: black;
     justify-content: center;
-    align-items: center;
     border: 2px solid #acaeb0;
     width: 50%;
     height: 45px;
@@ -106,7 +105,7 @@ body {
     background: rgba(216, 218, 219, 0.342);
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 325px;
+    margin-left: 275px;
 }
 
 #chart-container {
@@ -515,6 +514,15 @@ body {
     margin: 0 auto; /* Centers within max-width */
 }
 
+#subtitle-t {
+    font-size: 18px;
+    font-weight: 400; /* Slightly lighter text */
+    color: #444; /* Darker gray for contrast */
+    line-height: 1.6;
+    max-width: 1050px; /* Prevents overly wide text */
+    margin: 0 auto; /* Centers within max-width */
+}
+
 #description1 {
     font-size: 18px;
     font-weight: 400; /* Slightly lighter text */
@@ -526,14 +534,19 @@ body {
 }
 
 #description2 {
-    font-size: 18px;
-    font-weight: 400; /* Slightly lighter text */
-    color: #444; /* Darker gray for contrast */
-    line-height: 1.6;
-    max-width: 1100px; /* Prevents overly wide text */
-    margin: 0 auto; /* Centers within max-width */
-    margin-bottom: 20px;
-    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+    color: #605f5f; /* Darker gray for better contrast */
+    text-align: center; /* Centers the text */
+    margin-top: 10px; /* Space between graphs and description */
+    padding: 10px 15px; /* Adds some spacing inside the box */
+    background: #f8f8f8; /* Light gray background */
+    border-radius: 8px; /* Soft rounded corners */
+    border: 1px solid #ddd; /* Light border for subtle separation */
+    max-width: 1000px; /* Prevents it from stretching too wide */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
 }
 .graph-pair-description {
     font-size: 16px;
