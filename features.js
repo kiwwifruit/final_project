@@ -70,7 +70,7 @@ const heartbeatSound = document.getElementById("heartbeat-sound");
 
 let bpm = 75;
 let beatInterval;
-let isSoundStoppedByScroll = false;
+let isSoundStoppedByScroll = true;
 
 // Function to update heart animation at exact BPM
 // function updateHeartAnimation() {

@@ -325,7 +325,7 @@ function updateStudentOptions() {
                 <svg width="20" height="10">
                     <line x1="0" y1="5" x2="20" y2="5" stroke="#d63d25" stroke-width="3.5" stroke-dasharray="5,3"></line>
                 </svg>
-                <span>Average Value</span>
+                <span>Average Value (hover to view)</span>
             </div>`;
             pairContainer.appendChild(container);
     
